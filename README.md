@@ -1,9 +1,6 @@
 Print pure [`elm-syntax`](https://dark.elm.dmy.fr/packages/stil4m/elm-syntax/latest/) declarations as
 [ocaml](https://ocaml.org/) code.
 
-While that might already be useful on its own (wasm target etc),
-you can even compile the generated ocaml further into rust etc using [fable](https://fable.io/).
-
 ```elm
 import Elm.Parser
 import ElmSyntaxToOcaml
