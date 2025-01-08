@@ -5186,16 +5186,24 @@ printOcamlExpressionNotParenthesized ocamlExpression =
             let
                 part0Print : Print
                 part0Print =
-                    parts.part0 |> printOcamlExpressionNotParenthesized
+                    printOcamlExpressionNotParenthesized
+                        parts.part0
 
                 part1Print : Print
                 part1Print =
-                    parts.part1 |> printOcamlExpressionNotParenthesized
+                    Print.withIndentIncreasedBy 3
+                        (printOcamlExpressionNotParenthesized
+                            parts.part1
+                        )
 
                 part2UpPrints : List Print
                 part2UpPrints =
                     parts.part2Up
-                        |> List.map printOcamlExpressionNotParenthesized
+                        |> List.map
+                            (\part ->
+                                Print.withIndentIncreasedBy 3
+                                    (printOcamlExpressionNotParenthesized part)
+                            )
 
                 lineSpread : Print.LineSpread
                 lineSpread =
