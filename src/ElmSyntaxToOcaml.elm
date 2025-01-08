@@ -2678,7 +2678,16 @@ printOcamlExpressionRecord syntaxRecordFields =
                             let
                                 fieldValuePrint : Print
                                 fieldValuePrint =
-                                    printOcamlExpressionNotParenthesized fieldValue
+                                    case fieldValue of
+                                        OcamlExpressionMatchWith fieldValueMatchWith ->
+                                            -- parens are necessary because
+                                            -- the last inner match case result would is seen as a **statement**
+                                            -- For some reason, this behavior seems to only occur with match and not with e.g. if
+                                            printParenthesized
+                                                (printOcamlExpressionMatchWith fieldValueMatchWith)
+
+                                        fieldValueNotMatchWith ->
+                                            printOcamlExpressionNotParenthesized fieldValueNotMatchWith
                             in
                             Print.withIndentIncreasedBy 2
                                 (Print.exactly (fieldName ++ " =")
@@ -5315,8 +5324,8 @@ printOcamlExpressionList listElements =
                                             printParenthesized
                                                 (printOcamlExpressionMatchWith elementMatchWith)
 
-                                        resultNotMatchWith ->
-                                            printOcamlExpressionNotParenthesized resultNotMatchWith
+                                        elementNotMatchWith ->
+                                            printOcamlExpressionNotParenthesized elementNotMatchWith
                                     )
                             )
                             (Print.linebreakIndented
@@ -5359,7 +5368,17 @@ printOcamlExpressionRecordUpdate syntaxRecordUpdate =
                                             (Print.withIndentAtNextMultipleOf4
                                                 (Print.linebreakIndented
                                                     |> Print.followedBy
-                                                        (printOcamlExpressionNotParenthesized fieldValue)
+                                                        (case fieldValue of
+                                                            OcamlExpressionMatchWith fieldValueMatchWith ->
+                                                                -- parens are necessary because
+                                                                -- the last inner match case result would is seen as a **statement**
+                                                                -- For some reason, this behavior seems to only occur with match and not with e.g. if
+                                                                printParenthesized
+                                                                    (printOcamlExpressionMatchWith fieldValueMatchWith)
+
+                                                            fieldValueNotMatchWith ->
+                                                                printOcamlExpressionNotParenthesized fieldValueNotMatchWith
+                                                        )
                                                 )
                                             )
                                 )
