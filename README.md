@@ -21,10 +21,10 @@ plus2 n =
                 |> ElmSyntaxToOcaml.ocamlDeclarationsToModuleString
         )
 -->
-Ok """let rec sample_plus2 : (n : float): float =
-    Float.add n (list_sum [ 2.0 ])
+Ok """..some default declarations..
 
-..some default declarations..
+let sample_plus2 (n : float) : float =
+    Float.add n (list_sum [ 2.0 ])
 """
 ```
 
