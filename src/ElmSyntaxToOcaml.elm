@@ -4767,7 +4767,7 @@ expressionOperatorToOcamlFunctionReference operatorSymbol =
             Ok { moduleOrigin = Just "Float", name = "sub" }
 
         "*" ->
-            Ok { moduleOrigin = Just "Float", name = "sub" }
+            Ok { moduleOrigin = Just "Float", name = "mul" }
 
         "/" ->
             Ok { moduleOrigin = Just "Float", name = "div" }
