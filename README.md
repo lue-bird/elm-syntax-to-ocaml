@@ -113,7 +113,7 @@ run [this node script](https://github.com/lue-bird/elm-syntax-to-ocaml/tree/main
 -   not much care has been put into making the resulting code readable or even conventionally formatted
     and comments are not preserved
 
-Please [report any issues](https://github.com/lue-bird/elm-syntax-format/issues/new) you notice <3
+Please [report any issues](https://github.com/lue-bird/elm-syntax-to-ocaml/issues/new) you notice <3
 
 ### why ocaml?
 -   it runs decently fast and [can target Wasm through a third party](https://github.com/ocaml-wasm/wasm_of_ocaml)
